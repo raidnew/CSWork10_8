@@ -1,7 +1,6 @@
 ﻿using Common;
-using Task1;
 
-namespace Task3;
+namespace Task1;
 
 public class ExtendedPerson : Person
 {

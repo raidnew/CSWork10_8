@@ -25,7 +25,6 @@ public class JsonPersonStorage<T> : IPersonStorage
         _role = role;
         _personsList = new List<IPerson>();
         _fileStorage = new FileStorage("jsonstorage.json");
-        //_fileStorage = new FileStorage("../../../../jsonstorage.json");
         _fileStorage.OnFileLoaded += OnDataLoad;
         _fileStorage.LoadFile();
     }
@@ -78,7 +77,7 @@ public class JsonPersonStorage<T> : IPersonStorage
 
     virtual protected void CreateNewPerson(IPerson personData)
     {
-        Person newPerson = new Person(_lastPersonId,
+        Person newPerson = new Person(_lastPersonId++,
             personData.FirstName,
             personData.LastName,
             personData.ThirdName,

@@ -20,7 +20,14 @@
                         <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Header="Last Name"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=ThirdName}" Header="Third Name"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=PhoneNumber}" Header="Phone Number"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=PassportSeries}" Header="Passport series"/>
+                        <!-- GridViewColumn DisplayMemberBinding="{Binding Path=PassportSeries}" Header="Passport series" CellTemplate="{****}"/-->
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=PassportSeries}" Header="Passport series">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="Txt1" Text="TEST" Background="Yellow" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=PassportNumber}" Header="Passport number"/>
                     </GridView>
                 </ListView.View>

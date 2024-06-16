@@ -9,26 +9,13 @@ namespace Task1;
 /// </summary>
 public partial class App : System.Windows.Application
 {
-    PersonListWnd? _personListWnd = null;
+    PersonListWnd? _personListWnd;
     AddPerson? _addPersonWnd = null;
-    DebugWnd? _debugWnd = null;
-    IPersonStorage? _personStorage;
+    IPersonStorage _personStorage;
 
     protected override void OnActivated(EventArgs e)
     {
         base.OnActivated(e);
-        ShowDebugWindow();
-    }
-
-    protected override void OnExit(ExitEventArgs e)
-    {
-        _personStorage.Save();
-    }
-
-    virtual protected void ShowLoginWindow()
-    {
-        LoginWnd wnd = new LoginWnd(new Role[] { Role.Consultant });
-        wnd.Show();
     }
 
     private void Application_Startup(object sender, StartupEventArgs e)
@@ -37,19 +24,20 @@ public partial class App : System.Windows.Application
         LoginWnd.OnLogin += LoginSuccessful;
     }
 
-    private void ShowDebugWindow()
+    private void ShowLoginWindow()
     {
-        if (_debugWnd == null)
-        {
-            _debugWnd = new DebugWnd();
-            _debugWnd.Show();
-        }
+        LoginWnd wnd = new LoginWnd(new Role[] { Role.Consultant, Role.Manager });
+        wnd.Show();
     }
 
     private void LoginSuccessful(Role role)
     {
-        _personStorage = new JsonPersonStorage<Person>(role);
+        _personStorage = new ExtendedJsonPersonStorage(role);
         ShowPersonList(role);
+    }
+    protected override void OnExit(ExitEventArgs e)
+    {
+        _personStorage.Save();
     }
 
     private void ShowPersonList(Role role)

@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Task1;
 
-namespace Task3;
+namespace Task1;
 
 class ExtendedPersonConsultant : PersonConsultant
 {

@@ -30,8 +30,8 @@ public partial class LoginWnd : Window
         {
             if(role.ToString() == _roleCombo.SelectedValue.ToString())
             {
-                Close();
                 OnLogin?.Invoke((Role)_roleCombo.SelectedValue);
+                Close();
                 break;
             }
         }

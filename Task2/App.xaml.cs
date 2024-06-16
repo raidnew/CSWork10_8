@@ -98,7 +98,7 @@ public partial class App : System.Windows.Application
         _addPersonWnd = null;
     }
 
-    private void SavePerson(Person person)
+    private void SavePerson(IPerson person)
     {
         _personStorage?.SavePerson(person);
     }
